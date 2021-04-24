@@ -59,25 +59,14 @@ $q_instansi    = $this->db->query("SELECT * FROM tr_instansi LIMIT 1")->row();
 
         <tr>
             <td colspan="3">
-                <div style="margin-left: 2px; text-align: center; font-size: 14px"><img src="<?php echo base_url('upload/logo2.png'); ?>" style="float: left;margin:0 8px 4px 0;">
-                    <div style="margin-right: 2px; text-align: center; font-size: 14px"><img src="<?php echo base_url('upload/logo1.png'); ?>" style="float: right;margin:0 4px 8px 0;">
-                        <div style="text-align: center;font-size: 12px">P E M E R I N T A H K A B U P A T E N B O G O R </div>
-                        <div style="margin: 5px 0px 5px 0px; 
-                                text-align: center; 
-                                margin-left: 50px; 
-                                font-weight: bold; 
-                                font-size: 12px">DINAS PEKERJAAN UMUM DAN PENATAAN RUANG<br>
-                            UPT LABORATORIUM BAHAN KONSTRUKSI KELAS A<br>
-                        </div>
-                        <div style="margin: 5px 0px 5px 0px; 
-                                text-align: center; 
-                                margin-left: 50px; 
-                                font-size: 12px">"Infrastruktur Keren Kabupaten Bogor Beken"</div>
-                        <!-- <?php echo $q_instansi->nama; ?> -->
-                        <h2 style="text-align: center;  font-size: 9px">
-                            <?php echo $q_instansi->alamat; ?></h2>
-                        <h2 style="text-align: center;  font-size: 9px">
-                            Email: uptlabdpupr@gmail.com</h2>
+                <div style="margin-left: 2px; text-align: center"><img src="<?php echo base_url('upload/logo2.png'); ?>" style="float: left;margin:0 0px 4px 0;"></div>
+                <div style="margin-right: 2px; text-align: center"><img src="<?php echo base_url('upload/logo1.png'); ?>" style="float: right;margin:0 0px 8px 0;"></div>
+                <div style="text-align: center;font-size: 12px">P E M E R I N T A H K A B U P A T E N B O G O R</div>
+                <!-- <h4 style="margin: 5px 0 0.4em 0; font-size: 18px; color: #000; font-weight: bold"><?php echo $q_instansi->nama; ?></h4> -->
+                <div style="text-align: center;margin-left: 50px;font-weight: bold;font-size: 12px">DINAS PEKERJAAN UMUM DAN PENATAAN RUANG</div>
+                <div style="margin-left: 2px; text-align: center"><img src="<?php echo base_url('upload/logo3.png'); ?>" style="float: center;width: 300px;"></div>
+                <div style="color: #000; font-size: 9.5px;text-align: center"><?php echo $q_instansi->alamat; ?></div>
+                <div style="text-align: center;  font-size: 9px">Email: uptlabdpupr@gmail.com</div>
             </td>
         </tr>
 
