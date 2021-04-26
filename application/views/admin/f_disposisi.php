@@ -134,12 +134,11 @@ $q_instansi    = $this->db->query("SELECT * FROM tr_instansi LIMIT 1")->row();
                 <?php
                 if (!empty($datpil2)) {
                     foreach ($datpil2 as $dp) {
-                        echo "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b>" . " $dp->kpd_yth" . "</b> <br>";
+                        $a = $dp->level;
+                        echo "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b>" . " $a" . "</b> <br>";
                     }
                 }
 
-                // digunakan untuk menampilkan nama pelaksana
-                //Kepada :" .  $a . "
                 ?>
 
                 <ol>

@@ -58,12 +58,22 @@
                         <td><?php echo $b->isi_ringkas . "<br><b>File : </b><i><a href='" . base_URL() . "upload/surat_masuk/" . $b->file . "' target='_blank'>" . $b->file . "</a>" ?>
                         </td>
                         <td><?php echo $b->dari; ?></td>
-                        <td><?php echo $b->no_surat . "<br><i>" . tgl_jam_sql($b->tgl_surat) . "</i>" ?></td>
+                        <td><?php echo $b->no_surat . "<br><i>" . tgl_jam_sql($b->tgl_diterima) . "</i>" ?></td>
                         <td><?php
-                            $tgl = date("d-m-Y");
-                            // $tgl2 = date("d-m-Y", tgl_jam_sql($b->tgl_surat));
-                            echo $tgl;
-                            echo tgl_jam_sql($b->tgl_surat)
+                            date_default_timezone_set('Asia/Jakarta');
+                            $date_expire = $b->tgl_selesai;
+                            // $now = new DateTime();
+                            // $result = $now->format('Y-m-d H:i:s');
+                            // echo $result;
+                            if ($date_expire == '0000-00-00 00:00:00') {
+                                echo 'Surat Belum diproses';
+                            } else {
+                                $date_expire = $b->tgl_selesai;
+                                $date = new DateTime($date_expire);
+                                $now = new DateTime();
+                                echo $date->diff($now)->format("%d Hari, %h Jam, %i Menit");
+                            }
+
                             ?>
                         </td>
                         <td><?php
@@ -74,8 +84,10 @@
                             } elseif ($b->status == 3) {
                                 echo 'Surat sudah didisposisi kasubag';
                             } elseif ($b->status == 4) {
-                                echo 'Surat sudah diterima pelaksana';
+                                echo 'Surat diterima dan sedang diproses pelaksana';
                             } elseif ($b->status == 5) {
+                                echo 'Laporan selesai';
+                            } elseif ($b->status == 6) {
                                 echo 'Surat sudah selesai';
                             }
                             ?>
@@ -118,17 +130,37 @@
                             <a href="<?php echo base_URL() ?>index.php/admin/surat_disposisi/<?php echo $b->id ?>" class="btn btn-info btn-sm" title="Disposisi Surat"><i class="icon-white icon-list"> </i>
                                 Disp</a>
                         <?php
-                        } elseif ($this->session->userdata('admin_level') == 'Kasubag' && $b->status >= 2) {
+                        } elseif ($this->session->userdata('admin_level') == 'Kasubag TU' && $b->status >= 2) {
                         ?>
                             <a href="<?php echo base_URL() ?>index.php/admin/surat_disposisi_2/<?php echo $b->id ?>" class="btn btn-info btn-sm" title="Disposisi Surat"><i class="icon-white icon-list"> </i>
                                 Disp 2</a>
                         <?php
                         } elseif ($this->session->userdata('admin_level') == 'Pelaksana' && $b->status == 3) {
                         ?>
-                            <a href="<?php echo base_URL() ?>index.php/admin/terima?id=<?php echo $b->id ?>" class=" btn btn-success btn-sm" title="Terima Disposisi"><i class="icon-print icon-white"> </i>
-                                Terima</a>
+                            <a href="<?php echo base_URL() ?>index.php/admin/terima?id=<?php echo $b->id ?>" class=" btn btn-warning btn-sm" title="Terima Disposisi"><i class="icon-print icon-white"> </i>
+                                <?php
+                                date_default_timezone_set('Asia/Jakarta');
+                                $tanggalSekarang = date("d-m-Y h:i:s");
+                                $newTanggalSekarang = strtotime($tanggalSekarang);
+
+                                $jumlahHari = $b->jenis;
+                                $NewjumlahHari = 86400 * $jumlahHari;
+
+                                $hasilJumlah = $newTanggalSekarang + $NewjumlahHari;
+                                $tampil = date("d-m-Y h:i:s", $hasilJumlah);
+
+                                echo $b->jenis ?>Terima</a>
+
+                            <input type="text" name="newtgl" value="<?php echo $tampil; ?>">
+
+
                         <?php
-                        } elseif ($this->session->userdata('admin_level') == 'Pelaksana' && $b->status == 5 || $b->status == 4) {
+                        } elseif ($this->session->userdata('admin_level') == 'Pelaksana' && $b->status == 4) {
+                        ?>
+                            <a href="<?php echo base_URL() ?>index.php/admin/selesai?id=<?php echo $b->id ?>" class=" btn btn-success btn-sm" title="Laporan Selesai"><i class="icon-ok icon-white"> </i>
+                                Selesai</a>
+                        <?php
+                        } elseif ($this->session->userdata('admin_level') == 'Pelaksana' && $b->status == 6 || $b->status == 5) {
                         ?>
                             <a href="<?php echo base_URL() ?>index.php/admin/disposisi_cetak/<?php echo $b->id ?>" class="btn btn-info btn-sm" target="_blank" title="Cetak Disposisi"><i class="icon-print icon-white"> </i> Ctk</a>
                         <?php
@@ -144,7 +176,6 @@
                         <?php
                         }
                         ?>
-
 
                         </td>
                     </tr>

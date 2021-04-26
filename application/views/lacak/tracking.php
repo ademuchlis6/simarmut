@@ -1,7 +1,7 @@
-<?php $this->load->view('lacak/trackingStyle');?>
+<?php $this->load->view('lacak/trackingStyle'); ?>
 <div class="row bs-wizard" style="border-bottom:0; background-color:rgba(33, 222, 87, 0.42);">
     <div class="col-xs-2 bs-wizard-step complete" onclick="show(1)">
-        <div class="text-center bs-wizard-stepnum">Jumlah : <?php echo $jum1;?></div>
+        <div class="text-center bs-wizard-stepnum">Jumlah : <?php echo $jum1; ?></div>
         <div class="progress">
             <div class="progress-bar"></div>
         </div>
@@ -12,7 +12,7 @@
 
     <div class="col-xs-2 bs-wizard-step complete" onclick="show(2)">
         <!-- complete -->
-        <div class="text-center bs-wizard-stepnum">Jumlah : <?php echo $jum2;?></div>
+        <div class="text-center bs-wizard-stepnum">Jumlah : <?php echo $jum2; ?></div>
         <div class="progress">
             <div class="progress-bar"></div>
         </div>
@@ -22,7 +22,7 @@
 
     <div class="col-xs-2 bs-wizard-step complete" onclick="show(3)">
         <!-- complete -->
-        <div class="text-center bs-wizard-stepnum">Jumlah : <?php echo $jum3;?></div>
+        <div class="text-center bs-wizard-stepnum">Jumlah : <?php echo $jum3; ?></div>
         <div class="progress">
             <div class="progress-bar"></div>
         </div>
@@ -32,18 +32,28 @@
 
     <div class="col-xs-2 bs-wizard-step complete" onclick="show(4)">
         <!-- active -->
-        <div class="text-center bs-wizard-stepnum">Jumlah : <?php echo $jum4;?></div>
+        <div class="text-center bs-wizard-stepnum">Jumlah : <?php echo $jum4; ?></div>
         <div class="progress">
             <div class="progress-bar"></div>
         </div>
         <a href="#" class="bs-wizard-dot"></a>
-        <div class="bs-wizard-stepnum text-center"> Surat sudah diterima pelaksana</div>
+        <div class="bs-wizard-stepnum text-center"> Surat diterima dan diproses pelaksana</div>
     </div>
 
 
     <div class="col-xs-2 bs-wizard-step complete" onclick="show(5)">
         <!-- active -->
-        <div class="text-center bs-wizard-stepnum">Jumlah : <?php echo $jum5;?></div>
+        <div class="text-center bs-wizard-stepnum">Jumlah : <?php echo $jum5; ?></div>
+        <div class="progress">
+            <div class="progress-bar"></div>
+        </div>
+        <a href="#" class="bs-wizard-dot"></a>
+        <div class="bs-wizard-stepnum text-center">Laporan Selesai</div>
+    </div>
+
+    <div class="col-xs-2 bs-wizard-step complete" onclick="show(6)">
+        <!-- active -->
+        <div class="text-center bs-wizard-stepnum">Jumlah : <?php echo $jum6; ?></div>
         <div class="progress">
             <div class="progress-bar"></div>
         </div>
@@ -52,7 +62,7 @@
     </div>
 </div>
 
-<?php $this->load->view('lacak/trackingScript');?>
+<?php $this->load->view('lacak/trackingScript'); ?>
 
 
 

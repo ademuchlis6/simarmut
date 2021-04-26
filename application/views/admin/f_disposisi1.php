@@ -162,7 +162,7 @@ $q_instansi    = $this->db->query("SELECT * FROM tr_instansi LIMIT 1")->row();
                     }
                     if (!empty($datpil3)) {
                         foreach ($datpil3 as $d3) {
-                            echo "<b>" . "Yth Kasubag TU" . "</b>.<br><br>";
+                            // echo "<b>" . "Yth Kasubag TU" . "</b>.<br><br>";
                             echo "<li><b><i>" . $d3->isi_disposisi_2 . "</i></b>.<br><br> 
                                 <br><br><br><br><br><br><br>
                                 Tanggal Disposisi : " . tgl_jam_sql($d3->tgl_dis_2) . " </li>";
