@@ -923,7 +923,8 @@ class Admin extends CI_Controller
 	{
 		$id_surat = $_GET['id'];
 		$newtgl = $_GET['newtgl'];
-		$this->db->query("update t_surat_masuk set status=4,tgl_selesai='$newtgl' where id = '$id_surat'");
+		$sql = "update t_surat_masuk set status=4,tgl_selesai='$newtgl' where id = '$id_surat'";
+		$this->db->query($sql);
 		$this->session->set_flashdata("k", "<div class=\"alert alert-success\" id=\"alert\">Data diterima</div>");
 		redirect('index.php/admin/surat_masuk');
 	}

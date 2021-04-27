@@ -137,17 +137,19 @@
                         <?php
                         } elseif ($this->session->userdata('admin_level') == 'Pelaksana' && $b->status == 3) {
                         ?>
-                            <a href="<?php echo base_URL() ?>index.php/admin/terima?id=<?php echo $b->id ?>" class=" btn btn-warning btn-sm" title="Terima Disposisi"><i class="icon-print icon-white"> </i>
+                            <?php
+                            date_default_timezone_set('Asia/Jakarta');
+                            $tanggalSekarang = date("d-m-Y h:i:s");
+                            $newTanggalSekarang = strtotime($tanggalSekarang);
+
+                            $jumlahHari = $b->jenis;
+                            $NewjumlahHari = 86400 * $jumlahHari;
+
+                            $hasilJumlah = $newTanggalSekarang + $NewjumlahHari;
+                            $tampil = date("Y-m-d h:i:s", $hasilJumlah);
+                            ?>
+                            <a href="<?php echo base_URL() ?>index.php/admin/terima?id=<?php echo $b->id ?>&newtgl=<?php echo $tampil; ?>" class=" btn btn-warning btn-sm" title="Terima Disposisi"><i class="icon-print icon-white"> </i>
                                 <?php
-                                date_default_timezone_set('Asia/Jakarta');
-                                $tanggalSekarang = date("d-m-Y h:i:s");
-                                $newTanggalSekarang = strtotime($tanggalSekarang);
-
-                                $jumlahHari = $b->jenis;
-                                $NewjumlahHari = 86400 * $jumlahHari;
-
-                                $hasilJumlah = $newTanggalSekarang + $NewjumlahHari;
-                                $tampil = date("d-m-Y h:i:s", $hasilJumlah);
 
                                 echo $b->jenis ?>Terima</a>
 
